@@ -33,7 +33,7 @@ patchAndGetElement proxy = do
   runMaybeT do
     body <- wrap $ findInDocument "body"
     _ <- lift $ appendChild (toNode node) (toNode body)
-    lift $ patchInitial node proxy
+    _ <- lift $ patchInitial node proxy
     wrap $ findInDocument "#msg"
 
 

@@ -66,13 +66,13 @@ foreign import data VDOM :: (Type -> Type)
 -- | This is necessary since Snabbdom stores information in the vnode.
 -- | This makes it possible to implement a simpler and more performant architecture.
 -- | This also avoids the creation of a new old vnode tree.
-foreign import patch :: VNodeProxy -> VNodeProxy -> Effect Unit
+foreign import patch :: VNodeProxy -> VNodeProxy -> Effect VNodeProxy
 
 -- | Same as patch, but patches an initial DOM Element instead.
-foreign import patchInitial :: Element -> VNodeProxy -> Effect Unit
+foreign import patchInitial :: Element -> VNodeProxy -> Effect VNodeProxy
 
 -- | Same as patch initial, but takes a selector instead of a DOM Element.
-foreign import patchInitialSelector :: String -> VNodeProxy -> Effect Unit
+foreign import patchInitialSelector :: String -> VNodeProxy -> Effect VNodeProxy
 
 -- | Turns a String into a VNode
 foreign import text :: String -> VNodeProxy

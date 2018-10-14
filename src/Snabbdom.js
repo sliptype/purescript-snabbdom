@@ -70,7 +70,7 @@ exports.h = function(sel) {
 exports.patch = function(oldVnode) {
   return function(vnode) {
     return function() {
-      patch(oldVnode, vnode)
+      return patch(oldVnode, vnode)
     }
   }
 }
