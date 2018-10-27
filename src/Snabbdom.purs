@@ -3,7 +3,7 @@ module Snabbdom where
 import Effect (Effect)
 import Web.DOM.Element (Element)
 import Data.Maybe (Maybe(..))
-import Data.Map (Map)
+import Foreign.Object (Object)
 import Data.Unit (Unit)
 
 newtype VNodeProxy = VNodeProxy
@@ -22,15 +22,15 @@ newtype VNodeProxy = VNodeProxy
 -- | Snabbdom offers a rich selection of hooks.
 -- | Hooks are used both by modules to extend Snabbdom, and in normal code for executing arbitrary code at desired points in the life of a virtual node.
 type VNodeData =
-  { attrs :: Map String String
+  { attrs :: Object String
   , on :: VNodeEventObject
   , hook :: VNodeHookObjectProxy
   }
 
 foreign import data VNodeEventObject :: Type
 
--- | Transform a Map String representing a VNodeEventObject into its native counter part
-foreign import toVNodeEventObject :: forall a. Map String (a -> Effect Unit) -> VNodeEventObject
+-- | Transform an Object String representing a VNodeEventObject into its native counter part
+foreign import toVNodeEventObject :: forall a. Object (a -> Effect Unit) -> VNodeEventObject
 
 -- | The insert hook is invoked once the DOM element for a vnode has been inserted into the document and the rest of the patch cycle is done.
 -- | This means that you can do DOM measurements (like using getBoundingClientRect in this hook safely, knowing that no elements will be changed afterwards that could affect the position of the inserted elements.
