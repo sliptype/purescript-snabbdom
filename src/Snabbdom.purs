@@ -84,3 +84,5 @@ foreign import h :: String -> VNodeData -> Array VNodeProxy -> VNodeProxy
 -- | A hook that updates the value whenever it's attribute gets updated.
 foreign import updateValueHook :: VNodeProxy -> VNodeProxy -> Effect Unit
 
+-- | Converts a DOM node into a virtual node. Especially good for patching over an pre-existing, server-side generated content.
+foreign import toVNode :: Element -> VNodeProxy

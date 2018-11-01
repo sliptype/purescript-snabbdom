@@ -8,6 +8,8 @@ var patch = require('snabbdom').init([
 
 var h = require('snabbdom/h').default
 
+var toVNode = require('snabbdom/tovnode').default
+
 function transformEff1(fn) {
   return function(a) {
     return fn(a)()
@@ -99,3 +101,5 @@ exports.updateValueHook = function(old) {
     }
   }
 }
+
+exports.toVNode = toVNode;
